@@ -15,9 +15,9 @@ This container provides a consistent, isolated DevOps environment without instal
 - AWS account access
 
 # Create Environment File
-Create a .env file at devops-toolkit/build/.env.local directory:
+Create a .env file at build/.env.local directory:
 ```
-touch devops-toolkit/build/.env.local
+touch build/.env.local
 ```
 
 Example .env:

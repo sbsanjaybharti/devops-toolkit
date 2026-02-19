@@ -22,7 +22,7 @@ dist/
 .env
 .env.local
 .env.*.local
-*.devops_bash_*
+.devops_bash_*
 
 # Logs
 *.log

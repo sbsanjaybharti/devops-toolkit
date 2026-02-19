@@ -67,14 +67,27 @@ aws ec2 delete-key-pair --key-name <key-pair>
 ### Security Groups & VPC
 ```bash
 # Security Groups
-aws ec2 create-security-group --group-name <sg-name> --description "security-group-testing" --vpc-id <vpc-id>
-aws ec2 authorize-security-group-ingress --group-id <sg-id> --protocol tcp --port 22 --cidr 0.0.0.0/0
-aws ec2 authorize-security-group-ingress --group-id <sg-id> --protocol tcp --port 80 --cidr 0.0.0.0/0
+aws ec2 create-security-group \
+    --group-name <sg-name> \
+    --description "security-group-testing" \
+    --vpc-id <vpc-id>
+aws ec2 authorize-security-group-ingress \
+    --group-id <sg-id> \
+    --protocol tcp \
+    --port 22 \
+    --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress \
+    --group-id <sg-id> \
+    --protocol tcp \
+    --port 80 \
+    --cidr 0.0.0.0/0
 aws ec2 describe-security-groups --output table
 aws ec2 delete-security-group --group-id <sg-id>
 
 # VPC & Subnet
-aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=<vpc-name>}]'
+aws ec2 create-vpc \
+    --cidr-block 10.0.0.0/16 \
+    --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=<vpc-name>}]'
 aws ec2 describe-vpcs --output table
 aws ec2 create-subnet --vpc-id <vpc-id> --cidr-block 10.0.1.0/24
 aws ec2 delete-subnet --subnet-id <subnet-id>
@@ -83,7 +96,11 @@ aws ec2 delete-vpc --vpc-id <vpc-id>
 
 ### AMI Images
 ```bash
-aws ec2 describe-images --owners amazon --filters "Name=name,Values=al2023-ami-*" "Name=architecture,Values=x86_64" "Name=root-device-type,Values=ebs" --query "Images[*].[ImageId,Name]" --output table
+aws ec2 describe-images \
+    --owners amazon \
+    --filters "Name=name,Values=al2023-ami-*" "Name=architecture,Values=x86_64" "Name=root-device-type,Values=ebs" \
+    --query "Images[*].[ImageId,Name]" \
+    --output table
 ```
 
 ### S3 Bucket Management

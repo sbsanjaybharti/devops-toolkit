@@ -14,6 +14,14 @@ RUN apt-get update && apt-get install -y gettext-base
 
 LABEL maintainer="aws installation"
 ARG DEBIAN_FRONTEND=noninteractive
+# Install dependencies
+RUN apt-get install -y \
+        curl \
+        groff \
+        less \
+        python3 \
+        python3-pip && \
+    rm -rf /var/lib/apt/lists/*
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
 RUN sudo ./aws/install --update

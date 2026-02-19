@@ -24,13 +24,28 @@ aws iam detach-user-policy --user-name <username> --policy-arn <policy-arn>
 # Describe instances
 aws ec2 describe-instances
 aws ec2 describe-instances --output table
-aws ec2 describe-instances --query 'Reservations[].Instances[?State.Name==`running`].[InstanceId,PublicIpAddress]' --output table
-aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].[InstanceType,PublicIpAddress,PrivateIpAddress]" --output table
-aws ec2 describe-instances --region <region> --filters "Name=instance-state-name,Values=running" --output table
-aws ec2 describe-instances --query "Reservations[*].Instances[*]" --output text
+aws ec2 describe-instances \
+    --query 'Reservations[].Instances[?State.Name==`running`].[InstanceId,PublicIpAddress]' \
+    --output table
+aws ec2 describe-instances \
+    --filters "Name=instance-state-name,Values=running" \
+    --query "Reservations[*].Instances[*].[InstanceType,PublicIpAddress,PrivateIpAddress]" \
+    --output table
+aws ec2 describe-instances \
+    --region <region> \
+    --filters "Name=instance-state-name,Values=running" \
+    --output table
+aws ec2 describe-instances \
+    --query "Reservations[*].Instances[*]" \
+    --output text
 
 # Launch instances
-aws ec2 run-instances --image-id <ami-id> --instance-type <instance-type> --key-name <key-pair> --security-group-ids <security-group> --subnet-id <subnet-id>
+aws ec2 run-instances \
+    --image-id <ami-id> \
+    --instance-type <instance-type> \
+    --key-name <key-pair> \
+    --security-group-ids <security-group> \
+    --subnet-id <subnet-id>
 
 # Terminate instances
 aws ec2 terminate-instances --instance-ids <instance-id>

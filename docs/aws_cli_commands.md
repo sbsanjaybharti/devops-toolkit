@@ -63,6 +63,10 @@ aws ec2 create-key-pair --key-name <key-pair> --query "KeyMaterial" --output tex
 chmod 400 <key-pair>.pem
 aws ec2 delete-key-pair --key-name <key-pair>
 ```
+### AWS EKS
+```bash
+aws eks update-kubeconfig --name <cluster_name>
+```
 
 ### Security Groups & VPC
 ```bash

@@ -1,7 +1,7 @@
 variable "project_name" {
     type = string
     description = "The name of deployment project"
-    default = "toolkit"
+    default = "toolkit-code"
 }
 variable "aws_region" {
     type = string

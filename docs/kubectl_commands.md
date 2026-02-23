@@ -4,7 +4,7 @@ Essential kubectl commands for daily Kubernetes operations.
 
 ## Cluster & Nodes
 
-```
+```bash
 kubectl cluster-info
 kubectl get nodes
 kubectl top nodes
@@ -12,7 +12,7 @@ kubectl describe node <node-name>
 ```
 ## Pods
 
-```
+```bash
 kubectl get pods -A
 kubectl describe pod <pod-name>
 kubectl exec -it <pod-name> -- /bin/bash
@@ -21,7 +21,7 @@ kubectl delete pod <pod-name>
 ```
 ## Deployments
 
-```
+```bash
 kubectl get deployments
 kubectl apply -f <file.yaml>
 kubectl scale deployment <deployment-name> --replicas=3
@@ -31,7 +31,7 @@ kubectl rollout undo deployment <deployment-name>
 ```
 ## Services, PV & PVC
 
-```
+```bash
 kubectl get svc
 kubectl get pv
 kubectl get pvc
@@ -41,7 +41,7 @@ kubectl delete pv pvc <pvc-name>
 ```
 ## Debugging & Events
 
-```
+```bash
 kubectl get events
 kubectl get events --sort-by=".metadata.managedFields[0].time"
 kubectl top pods
@@ -51,7 +51,7 @@ kubectl explain <resource>
 ```
 ## Context
 
-```
+```bash
 kubectl config get-contexts
 kubectl config use-context <context-name>
 ```

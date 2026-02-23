@@ -15,7 +15,7 @@ resource "aws_subnet" "public" {
     map_public_ip_on_launch = true
 
     tags = {
-        Name = "${var.project_name}public-subnet"
+        Name = "${var.project_name}-public-subnet"
     }
 }
 
@@ -82,4 +82,13 @@ resource "aws_route_table" "private" {
 resource "aws_route_table_association" "private" {
     subnet_id      = aws_subnet.private.id
     route_table_id = aws_route_table.private.id
+}
+
+resource "aws_ecr_repository" "main" {
+    name = "${var.project_name}-repository"
+
+    tags = {
+        Name = "${var.project_name}-repository"
+    }
+  
 }

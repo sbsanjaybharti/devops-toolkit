@@ -8,56 +8,24 @@ This document contains Terraform commands commonly used for managing AWS infrast
 
 ## Initialize Terraform
 
-```
-terraform init
-```
-
-Initializes the working directory and downloads required providers (e.g., AWS provider).
-
-## Validate Configuration
-
-```
-terraform validate
-```
-
-Checks Terraform files for syntax and configuration errors.
-
-## Format Terraform Files
-
-```
-terraform fmt
+```bash
+terraform init          # Initialize Terraform
+terraform validate      # Validate Configuration
+terraform fmt           # Format Terraform Files
 ```
 
 Formats configuration files to standard Terraform style.
 
 ## Preview Infrastructure Changes
-
-```
+```bash
 terraform plan
+terraform plan -out=tfplan # Shows what changes Terraform will make.
 ```
-
-Shows what changes Terraform will make.
-
-Optional:
-
-```
-terraform plan -out=tfplan
-```
-
-Saves the execution plan to a file.
-
 ## Apply Infrastructure Changes
 
-```
+```bash
 terraform apply
-```
-
-Creates or updates AWS resources.
-
-Optional:
-
-```
-terraform apply -auto-approve
+terraform apply -auto-approve 
 ```
 
 Apply a saved plan:

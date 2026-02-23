@@ -17,7 +17,10 @@ dist/
 *.o
 *.so
 *.a
-
+.terraform
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
 # Environment files
 .env
 .env.local

@@ -14,6 +14,34 @@ resource "aws_eks_cluster" "main" {
     ]
 }
 
+# EKS Add-ons
+resource "aws_eks_addon" "vpc_cni" {
+    cluster_name = aws_eks_cluster.main.name
+    addon_name   = "vpc-cni"
+
+    depends_on = [
+        aws_eks_cluster.main
+    ]
+}
+
+resource "aws_eks_addon" "kube_proxy" {
+    cluster_name = aws_eks_cluster.main.name
+    addon_name   = "kube-proxy"
+
+    depends_on = [
+        aws_eks_cluster.main
+    ]
+}
+
+resource "aws_eks_addon" "coredns" {
+    cluster_name = aws_eks_cluster.main.name
+    addon_name   = "coredns"
+
+    depends_on = [
+        aws_eks_cluster.main
+    ]
+}
+
 # EKS Node Group
 resource "aws_eks_node_group" "main" {
     cluster_name    = aws_eks_cluster.main.name
@@ -31,7 +59,10 @@ resource "aws_eks_node_group" "main" {
     depends_on = [
         aws_iam_role_policy_attachment.eks_node_policy,
         aws_iam_role_policy_attachment.eks_cni_policy,
-        aws_iam_role_policy_attachment.eks_ecr_readonly
+        aws_iam_role_policy_attachment.eks_ecr_readonly,
+        aws_eks_addon.vpc_cni,
+        aws_eks_addon.kube_proxy,
+        aws_eks_addon.coredns
     ]
 }
 

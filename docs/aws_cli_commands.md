@@ -1,5 +1,4 @@
 ## AWS CLI Commands Reference Document
-
 ### Basic Setup & Configuration
 ```bash
 aws --version
@@ -7,7 +6,6 @@ aws configure
 aws configure list
 aws help
 ```
-
 ### IAM & Security
 ```bash
 aws sts get-caller-identity
@@ -18,7 +16,6 @@ aws iam delete-user --user-name <username>
 aws iam attach-user-policy --user-name <username> --policy-arn <policy-arn>
 aws iam detach-user-policy --user-name <username> --policy-arn <policy-arn>
 ```
-
 ### EC2 Instance Management
 ```bash
 # Describe instances
@@ -38,7 +35,6 @@ aws ec2 describe-instances \
 aws ec2 describe-instances \
     --query "Reservations[*].Instances[*]" \
     --output text
-
 # Launch instances
 aws ec2 run-instances \
     --image-id <ami-id> \
@@ -46,16 +42,13 @@ aws ec2 run-instances \
     --key-name <key-pair> \
     --security-group-ids <security-group> \
     --subnet-id <subnet-id>
-
 # Terminate instances
 aws ec2 terminate-instances --instance-ids <instance-id>
 aws ec2 wait instance-terminated --instance-ids <instance-id>
-
 # Stop/Start instances
 aws ec2 stop-instances --instance-ids <instance-id>
 aws ec2 start-instances --instance-ids <instance-id>
 ```
-
 ### Key Pairs
 ```bash
 aws ec2 describe-key-pairs --output table
@@ -67,7 +60,6 @@ aws ec2 delete-key-pair --key-name <key-pair>
 ```bash
 aws eks update-kubeconfig --name <cluster_name>
 ```
-
 ### Security Groups & VPC
 ```bash
 # Security Groups
@@ -87,7 +79,6 @@ aws ec2 authorize-security-group-ingress \
     --cidr 0.0.0.0/0
 aws ec2 describe-security-groups --output table
 aws ec2 delete-security-group --group-id <sg-id>
-
 # VPC & Subnet
 aws ec2 create-vpc \
     --cidr-block 10.0.0.0/16 \
@@ -97,7 +88,6 @@ aws ec2 create-subnet --vpc-id <vpc-id> --cidr-block 10.0.1.0/24
 aws ec2 delete-subnet --subnet-id <subnet-id>
 aws ec2 delete-vpc --vpc-id <vpc-id>
 ```
-
 ### AMI Images
 ```bash
 aws ec2 describe-images \
@@ -106,7 +96,6 @@ aws ec2 describe-images \
     --query "Images[*].[ImageId,Name]" \
     --output table
 ```
-
 ### S3 Bucket Management
 ```bash
 aws s3 ls
@@ -116,18 +105,15 @@ aws s3 rb s3://<bucket-name> --force
 aws s3 sync ./local-folder s3://<bucket-name>/
 aws s3 sync s3://<bucket-name>/ ./local-folder
 ```
-
 ### Miscellaneous Useful AWS CLI Commands
 ```bash
 # CloudWatch Logs
 aws logs describe-log-groups
 aws logs describe-log-streams --log-group-name <log-group>
 aws logs get-log-events --log-group-name <log-group> --log-stream-name <log-stream>
-
 # Lambda
 aws lambda list-functions
 aws lambda invoke --function-name <function-name> output.txt
-
 # CloudFormation
 aws cloudformation list-stacks
 aws cloudformation describe-stacks --stack-name <stack-name>

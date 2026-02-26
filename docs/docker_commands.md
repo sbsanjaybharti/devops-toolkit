@@ -72,11 +72,11 @@ export AWS_PROFILE=personal
 ## Authenticate and push Docker to ECR
 ```bash
 aws ecr get-login-password --region eu-central-1 | \
-docker login --username AWS --password-stdin 491085410687.dkr.ecr.eu-central-1.amazonaws.com
+docker login --username AWS --password-stdin <account_id>.dkr.ecr.eu-central-1.amazonaws.com
 # Build Image Directly with ECR Tag
-docker build -t 491085410687.dkr.ecr.eu-central-1.amazonaws.com/toolkit-managed-repository:latest .
+docker build -t <account_id>.dkr.ecr.eu-central-1.amazonaws.com/toolkit-managed-repository:latest .
 # Push Image to ECR
-docker push 491085410687.dkr.ecr.eu-central-1.amazonaws.com/toolkit-managed-repository:latest
+docker push <account_id>.dkr.ecr.eu-central-1.amazonaws.com/toolkit-managed-repository:latest
 # Verify Image in ECR
 aws ecr describe-images \
   --repository-name toolkit-managed-repository \
